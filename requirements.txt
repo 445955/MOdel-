@@ -1,0 +1,8 @@
+Flask==2.2.3
+TensorFlow==2.12.0  # Replace with your specific TensorFlow version
+Keras==2.12.0
+Pillow==9.4.0
+NumPy==1.24.3
+Flask-Bootstrap==5.0.3
+folium==0.14.2
+gunicon

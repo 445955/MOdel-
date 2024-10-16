@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Pothole Classifier</h1>
+
+    <form class="p-3 text-center" action="/" method="post" enctype="multipart/form-data">
+        <label for="imagefile" class="form-label">Upload an image:</label>
+        <input class="form-control" type="file" id="imagefile" name="imagefile" title="Select an image" required>
+        <input class="btn btn-primary mt-3" type="submit" value="Classify">
+    </form>
+
+    <!-- Display the prediction result -->
+    {% if prediction_text %}
+        <h2 class="text-center mt-4">{{ prediction_text }}</h2>
+    {% endif %}
+    
+    {% if image_url %}
+        <div class="text-center mt-4">
+            <h3>Uploaded Image:</h3>
+            <img src="{{ image_url }}" alt="Uploaded Image" class="uploaded-image">
+        </div>
+    {% endif %}
+
+    <!-- Navigate to the map page with pothole status -->
+    {% if pothole_status %}
+    <div class="text-center mt-4">
+        <a href="{{ url_for('map_view', pothole_status=pothole_status) }}" class="btn btn-secondary">Go to Map</a>
+    </div>
+    {% endif %}
+</body>
+</html>
